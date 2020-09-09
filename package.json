@@ -1,7 +1,7 @@
 {
-  "name": "APIRest",
+  "name": "apirest",
   "version": "1.0.0",
-  "description": "",
+  "description": "Authentication with NodeJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +14,13 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusMartinello/authwithnode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatheusMartinello/authwithnode/issues"
+  },
+  "homepage": "https://github.com/MatheusMartinello/authwithnode#readme"
 }
