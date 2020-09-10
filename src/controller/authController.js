@@ -11,7 +11,16 @@ function geradorToken(params = {}) {
         expiresIn: 86400,
     })
 }
+function authRole(role) {
+    return (req, res, next) => {
+        if (req.user.role !== role) {
+            res.status(401)
+            return res.send('not allowed');
+        }
 
+        next()
+    }
+}
 
 router.post('/register', async (req, res) => {
     const { email } = req.body;
@@ -23,7 +32,7 @@ router.post('/register', async (req, res) => {
         user.password = undefined;
         return res.send({
             user,
-            token: geradorToken({ id: user.id }),
+            token: geradorToken({ id: user.id, role: user.role }),
         });
     } catch (err) {
         return res.status(400).send({ error: 'Registro de erro!' });
@@ -52,4 +61,4 @@ router.post('/authenticate', async (req, res) => {
 
 })
 
-module.exports = app => app.use('/auth', router);
+module.exports = (authRole, app => app.use('/auth', router));
